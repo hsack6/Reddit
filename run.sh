@@ -44,8 +44,8 @@ WORK_PATH=$(pwd)
 #cd $WORK_PATH/Model/confirm_max_nnz_am/print_max_nnz_am/
 #python main.py # 標準出力されるmax_nnz_amをsetting_paramに記入
 #============================================= 4 =============================================
-#cd $WORK_PATH/MakeSample
-#python attribute_prediction_new.py
+cd $WORK_PATH/MakeSample
+python attribute_prediction_new.py
 cd $WORK_PATH/Model/attribute_prediction_new/Baseline
 python main.py
 cd $WORK_PATH/Model/attribute_prediction_new/FNN
