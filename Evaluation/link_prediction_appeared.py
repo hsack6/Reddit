@@ -29,11 +29,13 @@ from setting_param import Evaluation_link_prediction_appeared_EGCNh_InputDir as 
 from setting_param import Evaluation_link_prediction_appeared_STGCN_InputDir as STGCN_InputDir
 from setting_param import Evaluation_link_prediction_appeared_EGCNo_InputDir as EGCNo_InputDir
 from setting_param import Evaluation_link_prediction_appeared_GCN_InputDir as GCN_InputDir
+from setting_param import Evaluation_link_prediction_appeared_DynGEM_InputDir as DynGEM_InputDir
+from setting_param import Evaluation_link_prediction_appeared_LSTM_InputDir as LSTM_InputDir
 
 from setting_param import Evaluation_link_prediction_appeared_OutputDir as OutputDir
 
-InputDirs = [Baseline_InputDir, Random_InputDir, COSSIMMLP_InputDir, GCN_InputDir, STGCN_InputDir, EGCNh_InputDir, EGCNo_InputDir, STGGNN_InputDir]
-methods = ['Baseline', 'Random', 'FNN', 'GCN', 'STGCN', 'EvolveGCN-H', 'EvolveGCN-O', 'TGGNN']
+InputDirs = [Baseline_InputDir, Random_InputDir, COSSIMMLP_InputDir, LSTM_InputDir, DynGEM_InputDir, GCN_InputDir, STGCN_InputDir, EGCNh_InputDir, EGCNo_InputDir, STGGNN_InputDir]
+methods = ['Baseline', 'Random', 'FNN', 'LSTM', 'DynGEM', 'GCN', 'STGCN', 'EvolveGCN-H', 'EvolveGCN-O', 'TGGNN']
 os.makedirs(OutputDir, exist_ok=True)
 os.makedirs(OutputDir + '/train', exist_ok=True)
 os.makedirs(OutputDir + '/valid', exist_ok=True)
@@ -149,6 +151,7 @@ for idx, method in enumerate(methods):
     plt.legend()
     plt.savefig(OutputDir + '/' + method + '_loss.pdf')
 
+"""
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, True, False, False)
@@ -206,7 +209,7 @@ plt.figure()
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, True, False, False)
-    plt.plot(fpr, tpr, label=method + "(auc:" + str(round(auc,3)) + ")")
+    plt.plot(fpr, tpr, label=method + "(auc:" + str(round(auc,4)) + ")")
 plt.xlabel('FPR: False positive rate')
 plt.ylabel('TPR: True positive rate')
 plt.legend()
@@ -217,7 +220,7 @@ plt.figure()
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, True, False, False)
-    plt.plot(recall, precision, label=method + "(ap:" + str(round(ap,3)) + ")")
+    plt.plot(recall, precision, label=method + "(ap:" + str(round(ap,4)) + ")")
 plt.xlabel('Recall')
 plt.ylabel('Precision')
 plt.legend()
@@ -229,7 +232,7 @@ plt.figure()
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, False, True, False)
-    plt.plot(fpr, tpr, label=method + "(auc:" + str(round(auc,3)) + ")")
+    plt.plot(fpr, tpr, label=method + "(auc:" + str(round(auc,4)) + ")")
 plt.xlabel('FPR: False positive rate')
 plt.ylabel('TPR: True positive rate')
 plt.legend()
@@ -240,19 +243,19 @@ plt.figure()
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, False, True, False)
-    plt.plot(recall, precision, label=method + "(ap:" + str(round(ap,3)) + ")")
+    plt.plot(recall, precision, label=method + "(ap:" + str(round(ap,4)) + ")")
 plt.xlabel('Recall')
 plt.ylabel('Precision')
 plt.legend()
 plt.title('Comparing PR Curves')
 plt.savefig(OutputDir + '/valid/pr_curve.pdf')
-
+"""
 
 plt.figure()
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, False, False, True)
-    plt.plot(fpr, tpr, label=method + "(auc:" + str(round(auc,3)) + ")")
+    plt.plot(fpr, tpr, label=method + "(auc:" + str(round(auc,4)) + ")")
 plt.xlabel('FPR: False positive rate')
 plt.ylabel('TPR: True positive rate')
 plt.legend()
@@ -263,7 +266,7 @@ plt.figure()
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]
     fpr, tpr, thresholds_roc, auc, precision, recall, thresholds_pr, ap = get_performance(InputDir, method, False, False, True)
-    plt.plot(recall, precision, label=method + "(ap:" + str(round(ap,3)) + ")")
+    plt.plot(recall, precision, label=method + "(ap:" + str(round(ap,4)) + ")")
 plt.xlabel('Recall')
 plt.ylabel('Precision')
 plt.legend()
