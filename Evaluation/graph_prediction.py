@@ -300,7 +300,7 @@ def TsSplit(ts, L):
 
 
 def SubNxLost(ts, lost_nodes):
-    Nx = nx.from_numpy_matrix(np.load(MakeSample_node_prediction_lost_InputDir + '/adjacency' + str(ts - 1) + '.npy'))
+    Nx = nx.from_numpy_matrix(mmread(MakeSample_node_prediction_lost_InputDir + '/adjacency' + str(ts - 1)).toarray())
     return nx.Graph(Nx.edges(lost_nodes))
 
 
@@ -392,7 +392,7 @@ def link_prediction(n_appeared, p_appeared, n_disappeared, p_disappeared, n_new,
     for i, ts in enumerate(ts_list):
         ts_train, ts_test, ts_all = TsSplit(ts, L)
         t_edge_set = set()
-        for edge in nx.from_numpy_matrix(np.load(MakeSample_node_prediction_lost_InputDir + '/adjacency' + str(ts_train[-1]) + '.npy')).edges:
+        for edge in nx.from_numpy_matrix(mmread(MakeSample_node_prediction_lost_InputDir + '/adjacency' + str(ts_train[-1])).toarray()).edges:
             t_edge_set.add(frozenset({edge[0], edge[1]}))
 
         appeared_edge_pred_set = appeared_edge_pred_set_list[i]
@@ -501,5 +501,5 @@ def link_prediction(n_appeared, p_appeared, n_disappeared, p_disappeared, n_new,
     df.to_csv(OutputDir + '/link_prediction_result-' + n_appeared + '-' + p_appeared + '-' + n_disappeared + '-' + p_disappeared + '-' + n_new + '-' + p_new + '-' + n_lost + '-' + p_lost + '.csv')
 
 
-# link_prediction(n_appeared, p_appeared, n_disappeared, p_disappeared,  n_new,                    p_new, n_lost,  p_lost)
-link_prediction(      "LSTM",   "STGGNN",        "LSTM",      "repeat0", "LSTM", "COSSIMMLP_Baseline_mix", "LSTM", "STGGNN")
+# link_prediction(n_appeared, p_appeared, n_disappeared, p_disappeared,  n_new,                    p_new,     n_lost,  p_lost)
+link_prediction(  "Baseline",      "GCN",    "Baseline",       "STGCN", "LSTM", "COSSIMMLP_Baseline_mix", "Baseline", "LSTM")

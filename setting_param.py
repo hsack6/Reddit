@@ -37,6 +37,14 @@ MakeSample_link_prediction_new_OutputDir = ROOT_PATH + "/data/learning_data/link
 MakeSample_link_prediction_new_Baseline_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/Baseline"
 MakeSample_link_prediction_new_DeepMatchMax_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/DeepMatchMax"
 MakeSample_link_prediction_new_FNN_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/FNN"
+# DynGEM embedding
+MakeSample_link_prediction_appeared_DynGEM_InputDir = MakeSample_link_prediction_appeared_OutputDir
+MakeSample_link_prediction_disappeared_DynGEM_InputDir = MakeSample_link_prediction_disappeared_OutputDir
+MakeSample_node_prediction_lost_DynGEM_InputDir = MakeSample_node_prediction_lost_OutputDir
+MakeSample_link_prediction_appeared_DynGEM_OutputDir = ROOT_PATH + "/data/learning_data/DynGEM_link_prediction_appeared"
+MakeSample_link_prediction_disappeared_DynGEM_OutputDir = ROOT_PATH + "/data/learning_data/DynGEM_link_prediction_disappeared"
+MakeSample_node_prediction_lost_DynGEM_OutputDir = ROOT_PATH + "/data/learning_data/DynGEM_node_prediction_lost"
+
 
 # Model IO dir
 # prediction_num_of_edge
