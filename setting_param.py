@@ -31,6 +31,11 @@ MakeSample_node_prediction_lost_OutputDir = ROOT_PATH + "/data/learning_data/nod
 # attribute_prediction_new
 MakeSample_attribute_prediction_new_InputDir = ROOT_PATH + "/data/graph"
 MakeSample_attribute_prediction_new_OutputDir = ROOT_PATH + "/data/learning_data/attribute_prediction_new"
+# attribute_prediction_new_PROSER
+MakeSample_attribute_prediction_new_PROSER_InputDir = ROOT_PATH + "/data/graph"
+MakeSample_attribute_prediction_new_PROSER_OutputDir = ROOT_PATH + "/data/learning_data/attribute_prediction_new_PROSER"
+
+
 # link_prediction_new
 MakeSample_link_prediction_new_InputDir = ROOT_PATH + "/data/graph"
 MakeSample_link_prediction_new_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new"
@@ -116,6 +121,14 @@ Model_attribute_prediction_new_InputDir = MakeSample_attribute_prediction_new_Ou
 Model_attribute_prediction_new_Baseline_OutputDir = ROOT_PATH + "/data/learning_result/attribute_prediction_new/Baseline"
 Model_attribute_prediction_new_FNN_OutputDir = ROOT_PATH + "/data/learning_result/attribute_prediction_new/FNN"
 Model_attribute_prediction_new_DeepMatchMax_OutputDir = ROOT_PATH + "/data/learning_result/attribute_prediction_new/DeepMatchMax"
+
+# attribute_prediction_new_PROSER_oracle
+Model_attribute_prediction_new_PROSER_oracle_InputDir = ROOT_PATH + "/data/graph"
+Model_attribute_prediction_new_PROSER_oracle_OutputDir = ROOT_PATH + "/data/result/attribute_prediction_new_PROSER_oracle"
+
+# attribute_prediction_new_PROSER
+Model_attribute_prediction_new_PROSER_InputDir = MakeSample_attribute_prediction_new_PROSER_OutputDir
+Model_attribute_prediction_new_PROSER_FNN_OutputDir = ROOT_PATH + "/data/learning_result/attribute_prediction_new_PROSER/FNN"
 
 # link_prediction_new
 Model_link_prediction_new_Baseline_mix_InputDir = MakeSample_link_prediction_new_Baseline_OutputDir + "/mix"
@@ -211,6 +224,10 @@ Evaluation_attribute_prediction_new_Baseline_InputDir = Model_attribute_predicti
 Evaluation_attribute_prediction_new_FNN_InputDir = Model_attribute_prediction_new_FNN_OutputDir
 Evaluation_attribute_prediction_new_DeepMatchMax_InputDir = Model_attribute_prediction_new_DeepMatchMax_OutputDir
 Evaluation_attribute_prediction_new_OutputDir = ROOT_PATH + "/data/result/attribute_prediction_new"
+
+# attribute_prediction_new_PROSER
+Evaluation_attribute_prediction_new_PROSER_InputDir = ROOT_PATH + "/data/graph"
+Evaluation_attribute_prediction_new_PROSER_OutputDir = ROOT_PATH + "/data/result/attribute_prediction_new_PROSER"
 
 # link_prediction_new
 Evaluation_link_prediction_new_COSSIMMLP_Baseline_mix_InputDir = Model_link_prediction_new_COSSIMMLP_Baseline_mix_OutputDir
@@ -435,9 +452,21 @@ attribute_prediction_new_niter = 100
 attribute_prediction_new_patience = 10
 attribute_prediction_new_lr = 0.01
 
+# attribute_prediction_new_PROSER
+attribute_prediction_new_PROSER_worker = 2
+attribute_prediction_new_PROSER_batchSize = 1
+attribute_prediction_new_PROSER_state_dim = attribute_dim * 2
+attribute_prediction_new_PROSER_output_dim = 1
+attribute_prediction_new_PROSER_target_idx = 4 # idx of percentile (min, 25, 50, 75, max)
+attribute_prediction_new_PROSER_threshold = 0.88514332408633 # threshold of max
+attribute_prediction_new_PROSER_init_L = L
+attribute_prediction_new_PROSER_niter = 1000
+attribute_prediction_new_PROSER_patience = 10
+attribute_prediction_new_PROSER_lr = 0.001
+
 # link_prediction_new
 link_prediction_new_worker = 2
-link_prediction_new_batchSize = 1
+link_prediction_new_batchSize = 2
 link_prediction_new_state_dim = attribute_dim
 link_prediction_new_annotation_dim = attribute_dim
 link_prediction_new_output_dim = all_node_num + n_expanded

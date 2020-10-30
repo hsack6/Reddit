@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from model import STGGNN
+from model import FNN
 from utils.train import train
 from utils.valid import valid
 from utils.test import test
@@ -19,30 +19,28 @@ import sys
 import os
 current_dir = os.path.dirname(os.path.abspath("__file__"))
 sys.path.append( str(current_dir) + '/../../../' )
-from setting_param import Model_node_prediction_lost_InputDir as InputDir
-from setting_param import Model_node_prediction_lost_STGGNN_OutputDir as OutputDir
-from setting_param import node_prediction_lost_worker
-from setting_param import node_prediction_lost_batchSize
-from setting_param import node_prediction_lost_lr
-from setting_param import node_prediction_lost_init_L
-from setting_param import node_prediction_lost_annotation_dim
-from setting_param import node_prediction_lost_state_dim
-from setting_param import node_prediction_lost_output_dim
-from setting_param import node_prediction_lost_n_steps
-from setting_param import node_prediction_lost_niter
-from setting_param import node_prediction_lost_patience
+from setting_param import Model_attribute_prediction_new_PROSER_InputDir as InputDir
+from setting_param import Model_attribute_prediction_new_PROSER_FNN_OutputDir as OutputDir
+from setting_param import attribute_prediction_new_PROSER_worker
+from setting_param import attribute_prediction_new_PROSER_batchSize
+from setting_param import attribute_prediction_new_PROSER_state_dim
+from setting_param import attribute_prediction_new_PROSER_output_dim
+from setting_param import attribute_prediction_new_PROSER_target_idx
+from setting_param import attribute_prediction_new_PROSER_init_L
+from setting_param import attribute_prediction_new_PROSER_lr
+from setting_param import attribute_prediction_new_PROSER_niter
+from setting_param import attribute_prediction_new_PROSER_patience
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--workers', type=int, help='number of data loading workers', default=node_prediction_lost_worker)
-parser.add_argument('--batchSize', type=int, default=node_prediction_lost_batchSize, help='input batch size')
-parser.add_argument('--state_dim', type=int, default=node_prediction_lost_state_dim, help='GGNN hidden state size')
-parser.add_argument('--annotation_dim', type=int, default=node_prediction_lost_annotation_dim, help='GGNN input annotation size')
-parser.add_argument('--output_dim', type=int, default=node_prediction_lost_output_dim, help='Model output state size')
-parser.add_argument('--init_L', type=int, default=node_prediction_lost_init_L, help='number of observation time step')
-parser.add_argument('--niter', type=int, default=node_prediction_lost_niter, help='number of epochs to train for')
-parser.add_argument('--n_steps', type=int, default=node_prediction_lost_n_steps, help='propogation steps number of GGNN')
-parser.add_argument('--patience', type=int, default=node_prediction_lost_patience, help='Early stopping patience')
-parser.add_argument('--lr', type=float, default=node_prediction_lost_lr, help='learning rate')
+parser.add_argument('--workers', type=int, help='number of data loading workers', default=attribute_prediction_new_PROSER_worker)
+parser.add_argument('--batchSize', type=int, default=attribute_prediction_new_PROSER_batchSize, help='input batch size')
+parser.add_argument('--state_dim', type=int, default=attribute_prediction_new_PROSER_state_dim, help='state_dim')
+parser.add_argument('--output_dim', type=int, default=attribute_prediction_new_PROSER_output_dim, help='output_dim')
+parser.add_argument('--target_idx', type=int, default=attribute_prediction_new_PROSER_target_idx, help='target_idx')
+parser.add_argument('--init_L', type=int, default=attribute_prediction_new_PROSER_init_L, help='init L')
+parser.add_argument('--niter', type=int, default=attribute_prediction_new_PROSER_niter, help='number of epochs to train for')
+parser.add_argument('--patience', type=int, default=attribute_prediction_new_PROSER_patience, help='Early stopping patience')
+parser.add_argument('--lr', type=float, default=attribute_prediction_new_PROSER_lr, help='learning rate')
 parser.add_argument('--cuda', action='store_true', help='enables cuda')
 parser.add_argument('--verbal', action='store_true', help='print training info or not')
 parser.add_argument('--manualSeed', type=int, help='manual seed')
@@ -80,10 +78,7 @@ def main(opt):
     all_dataloader = BADataloader(all_dataset, batch_size=opt.batchSize, \
                                      shuffle=False, num_workers=opt.workers, drop_last=False)
 
-    opt.n_edge_types = train_dataset.n_edge_types
-    opt.n_node = train_dataset.n_node
-
-    net = STGGNN(opt, kernel_size=2, n_blocks=1, state_dim_bottleneck=opt.state_dim, annotation_dim_bottleneck=opt.annotation_dim)
+    net = FNN(opt)
     net.double()
     print(net)
 
@@ -100,8 +95,6 @@ def main(opt):
     train_loss_ls = []
     valid_loss_ls = []
     test_loss_ls = []
-
-    #net.load_state_dict(torch.load(OutputDir + '/checkpoint_5083.pt'))
 
     for epoch in range(0, opt.niter):
         train_loss = train(epoch, train_dataloader, net, criterion, optimizer, opt)
@@ -121,7 +114,7 @@ def main(opt):
     df.to_csv(OutputDir + '/loss.csv', index=False)
 
     net.load_state_dict(torch.load(OutputDir + '/checkpoint.pt'))
-    inference(all_dataloader, net, criterion, opt, OutputDir)
+    inference(all_dataloader, net, opt, OutputDir)
 
 
 if __name__ == "__main__":

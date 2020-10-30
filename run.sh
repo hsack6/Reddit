@@ -77,12 +77,12 @@ WORK_PATH=$(pwd)
 #python main.py
 #cd $WORK_PATH/Model/node_prediction_lost/STGCN
 #python main.py
-#cd $WORK_PATH/Model/node_prediction_lost/STGGNN
-#python main.py
+cd $WORK_PATH/Model/node_prediction_lost/STGGNN
+python main.py
 #cd $WORK_PATH/Model/node_prediction_lost/DynGEM
 #python main.py
-cd $WORK_PATH/Model/node_prediction_lost/FNN
-python main.py
+#cd $WORK_PATH/Model/node_prediction_lost/FNN
+#python main.py
 cd $WORK_PATH/Evaluation
 python node_prediction_lost.py
 
@@ -119,10 +119,10 @@ python node_prediction_lost.py
 #python main.py
 #cd $WORK_PATH/Model/link_prediction_appeared/DynGEM
 #python main.py
-cd $WORK_PATH/Model/link_prediction_appeared/LSTM
-python main.py
-cd $WORK_PATH/Evaluation
-python link_prediction_appeared.py
+#cd $WORK_PATH/Model/link_prediction_appeared/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python link_prediction_appeared.py
 
 #link_prediction_disappeared学習&評価
 #cd $WORK_PATH/Model/link_prediction_disappeared/Baseline
@@ -143,7 +143,7 @@ python link_prediction_appeared.py
 #python main.py
 #cd $WORK_PATH/Model/link_prediction_disappeared/DynGEM
 #python main.py
-cd $WORK_PATH/Model/link_prediction_disappeared/LSTM
-python main.py
-cd $WORK_PATH/Evaluation
-python link_prediction_disappeared.py
+#cd $WORK_PATH/Model/link_prediction_disappeared/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python link_prediction_disappeared.py
