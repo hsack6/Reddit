@@ -33,11 +33,14 @@ from setting_param import Evaluation_link_prediction_new_COSSIMMLP_FNN_mix_Input
 from setting_param import Evaluation_link_prediction_new_COSSIMMLP_FNN_learning_InputDir as COSSIMMLP_FNN_learning_InputDir
 from setting_param import Evaluation_link_prediction_new_COSSIMMLP_FNN_inference_InputDir as COSSIMMLP_FNN_inference_InputDir
 
+from setting_param import Evaluation_link_prediction_new_COSSIMMLP_PROSER_mix_InputDir as COSSIMMLP_PROSER_mix_InputDir
+from setting_param import Evaluation_link_prediction_new_COSSIMMLP_PROSER_learning_InputDir as COSSIMMLP_PROSER_learning_InputDir
+from setting_param import Evaluation_link_prediction_new_COSSIMMLP_PROSER_inference_InputDir as COSSIMMLP_PROSER_inference_InputDir
 
 from setting_param import Evaluation_link_prediction_new_OutputDir as OutputDir
 
-InputDirs = [COSSIMMLP_Baseline_learning_InputDir, COSSIMMLP_Baseline_inference_InputDir, COSSIMMLP_Baseline_mix_InputDir, COSSIMMLP_DeepMatchMax_learning_InputDir, COSSIMMLP_DeepMatchMax_inference_InputDir, COSSIMMLP_DeepMatchMax_mix_InputDir, COSSIMMLP_FNN_learning_InputDir, COSSIMMLP_FNN_inference_InputDir, COSSIMMLP_FNN_mix_InputDir]
-methods = ['COSSIMMLP_Baseline_learning', 'COSSIMMLP_Baseline_inference', 'COSSIMMLP_Baseline_mix', 'COSSIMMLP_DeepMatchMax_learning', 'COSSIMMLP_DeepMatchMax_inference', 'COSSIMMLP_DeepMatchMax_mix', 'COSSIMMLP_FNN_learning', 'COSSIMMLP_FNN_inference', 'COSSIMMLP_FNN_mix']
+InputDirs = [COSSIMMLP_Baseline_learning_InputDir, COSSIMMLP_Baseline_inference_InputDir, COSSIMMLP_Baseline_mix_InputDir, COSSIMMLP_DeepMatchMax_learning_InputDir, COSSIMMLP_DeepMatchMax_inference_InputDir, COSSIMMLP_DeepMatchMax_mix_InputDir, COSSIMMLP_FNN_learning_InputDir, COSSIMMLP_FNN_inference_InputDir, COSSIMMLP_FNN_mix_InputDir, COSSIMMLP_PROSER_learning_InputDir, COSSIMMLP_PROSER_inference_InputDir, COSSIMMLP_PROSER_mix_InputDir]
+methods = ['COSSIMMLP_Baseline_learning', 'COSSIMMLP_Baseline_inference', 'COSSIMMLP_Baseline_mix', 'COSSIMMLP_DeepMatchMax_learning', 'COSSIMMLP_DeepMatchMax_inference', 'COSSIMMLP_DeepMatchMax_mix', 'COSSIMMLP_FNN_learning', 'COSSIMMLP_FNN_inference', 'COSSIMMLP_FNN_mix', 'COSSIMMLP_PROSER_learning', 'COSSIMMLP_PROSER_inference', 'COSSIMMLP_PROSER_mix']
 os.makedirs(OutputDir, exist_ok=True)
 os.makedirs(OutputDir + '/train', exist_ok=True)
 os.makedirs(OutputDir + '/valid', exist_ok=True)

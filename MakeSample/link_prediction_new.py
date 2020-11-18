@@ -24,14 +24,16 @@ from setting_param import Evaluation_prediction_num_of_node_new_LSTM_InputDir as
 from setting_param import Model_attribute_prediction_new_Baseline_OutputDir as Baseline_Out_InputDir
 from setting_param import Model_attribute_prediction_new_DeepMatchMax_OutputDir as DeepMatchMax_Out_InputDir
 from setting_param import Model_attribute_prediction_new_FNN_OutputDir as FNN_Out_InputDir
+from setting_param import Model_attribute_prediction_new_PROSER_selecter_OutputDir as PROSER_Out_InputDir
 
 from setting_param import MakeSample_link_prediction_new_Baseline_OutputDir as Baseline_OutputDir
 from setting_param import MakeSample_link_prediction_new_DeepMatchMax_OutputDir as DeepMatchMax_OutputDir
 from setting_param import MakeSample_link_prediction_new_FNN_OutputDir as FNN_OutputDir
+from setting_param import MakeSample_link_prediction_new_PROSER_OutputDir as PROSER_OutputDir
 
-Method_list = ["Baseline", "DeepMatchMax", "FNN"]
-Out_InputDir_list = [Baseline_Out_InputDir, DeepMatchMax_Out_InputDir, FNN_Out_InputDir]
-OutputDir_list = [Baseline_OutputDir, DeepMatchMax_OutputDir, FNN_OutputDir]
+Method_list = ["Baseline", "DeepMatchMax", "FNN", "PROSER"]
+Out_InputDir_list = [Baseline_Out_InputDir, DeepMatchMax_Out_InputDir, FNN_Out_InputDir, PROSER_Out_InputDir]
+OutputDir_list = [Baseline_OutputDir, DeepMatchMax_OutputDir, FNN_OutputDir, PROSER_OutputDir]
 
 from setting_param import ratio_test
 from setting_param import ratio_valid
@@ -118,7 +120,7 @@ def get_exist_matrix(ts):
     return exist_row * exist_col
 
 def NodeAttribute(ts):
-    return  mmread(InputDir + '/node_attribute' + str(ts)).toarray()
+    return mmread(InputDir + '/node_attribute' + str(ts)).toarray()
 
 
 def get_expanded_node_attribute_learning(ts, L, n_node, n_expanded):
@@ -288,7 +290,6 @@ for method_idx, OutputDir in enumerate(OutputDir_list):
                                                                                         teacher_idx_paths,
                                                                                         node_pair_list_paths, all_idx,
                                                                                         ts)
-
         # reference check
         assert sorted(GetNodes(ts_test, L, 'new')) == teacher_idx.tolist()[:teacher_num], 'reference error'
         predicted_new_node_num = int(np.load(predicted_num_InputDir + '/output/pred' + str(ts) + '.npy')[0])

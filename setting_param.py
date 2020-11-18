@@ -34,14 +34,14 @@ MakeSample_attribute_prediction_new_OutputDir = ROOT_PATH + "/data/learning_data
 # attribute_prediction_new_PROSER
 MakeSample_attribute_prediction_new_PROSER_InputDir = ROOT_PATH + "/data/graph"
 MakeSample_attribute_prediction_new_PROSER_OutputDir = ROOT_PATH + "/data/learning_data/attribute_prediction_new_PROSER"
-
-
 # link_prediction_new
 MakeSample_link_prediction_new_InputDir = ROOT_PATH + "/data/graph"
 MakeSample_link_prediction_new_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new"
 MakeSample_link_prediction_new_Baseline_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/Baseline"
 MakeSample_link_prediction_new_DeepMatchMax_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/DeepMatchMax"
 MakeSample_link_prediction_new_FNN_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/FNN"
+MakeSample_link_prediction_new_PROSER_OutputDir = ROOT_PATH + "/data/learning_data/link_prediction_new/PROSER"
+
 # DynGEM embedding
 MakeSample_link_prediction_appeared_DynGEM_InputDir = MakeSample_link_prediction_appeared_OutputDir
 MakeSample_link_prediction_disappeared_DynGEM_InputDir = MakeSample_link_prediction_disappeared_OutputDir
@@ -130,6 +130,10 @@ Model_attribute_prediction_new_PROSER_oracle_OutputDir = ROOT_PATH + "/data/resu
 Model_attribute_prediction_new_PROSER_InputDir = MakeSample_attribute_prediction_new_PROSER_OutputDir
 Model_attribute_prediction_new_PROSER_FNN_OutputDir = ROOT_PATH + "/data/learning_result/attribute_prediction_new_PROSER/FNN"
 
+# attribute_prediction_new_PROSER_selecter
+Model_attribute_prediction_new_PROSER_selecter_InputDir = ROOT_PATH + "/data/graph"
+Model_attribute_prediction_new_PROSER_selecter_OutputDir = ROOT_PATH + "/data/learning_result/attribute_prediction_new/PROSER"
+
 # link_prediction_new
 Model_link_prediction_new_Baseline_mix_InputDir = MakeSample_link_prediction_new_Baseline_OutputDir + "/mix"
 Model_link_prediction_new_Baseline_learning_InputDir = MakeSample_link_prediction_new_Baseline_OutputDir + "/learning"
@@ -143,6 +147,10 @@ Model_link_prediction_new_FNN_mix_InputDir = MakeSample_link_prediction_new_FNN_
 Model_link_prediction_new_FNN_learning_InputDir = MakeSample_link_prediction_new_FNN_OutputDir + "/learning"
 Model_link_prediction_new_FNN_inference_InputDir = MakeSample_link_prediction_new_FNN_OutputDir + "/inference"
 
+Model_link_prediction_new_PROSER_mix_InputDir = MakeSample_link_prediction_new_PROSER_OutputDir + "/mix"
+Model_link_prediction_new_PROSER_learning_InputDir = MakeSample_link_prediction_new_PROSER_OutputDir + "/learning"
+Model_link_prediction_new_PROSER_inference_InputDir = MakeSample_link_prediction_new_PROSER_OutputDir + "/inference"
+
 Model_link_prediction_new_COSSIMMLP_Baseline_mix_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/Baseline/mix"
 Model_link_prediction_new_COSSIMMLP_Baseline_learning_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/Baseline/learning"
 Model_link_prediction_new_COSSIMMLP_Baseline_inference_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/Baseline/inference"
@@ -154,6 +162,10 @@ Model_link_prediction_new_COSSIMMLP_DeepMatchMax_inference_OutputDir = ROOT_PATH
 Model_link_prediction_new_COSSIMMLP_FNN_mix_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/FNN/mix"
 Model_link_prediction_new_COSSIMMLP_FNN_learning_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/FNN/learning"
 Model_link_prediction_new_COSSIMMLP_FNN_inference_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/FNN/inference"
+
+Model_link_prediction_new_COSSIMMLP_PROSER_mix_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/PROSER/mix"
+Model_link_prediction_new_COSSIMMLP_PROSER_learning_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/PROSER/learning"
+Model_link_prediction_new_COSSIMMLP_PROSER_inference_OutputDir = ROOT_PATH + "/data/learning_result/link_prediction_new/COSSIMMLP/PROSER/inference"
 
 
 # Evaluation IO dir
@@ -223,6 +235,7 @@ Evaluation_node_prediction_lost_OutputDir = ROOT_PATH + "/data/result/node_predi
 Evaluation_attribute_prediction_new_Baseline_InputDir = Model_attribute_prediction_new_Baseline_OutputDir
 Evaluation_attribute_prediction_new_FNN_InputDir = Model_attribute_prediction_new_FNN_OutputDir
 Evaluation_attribute_prediction_new_DeepMatchMax_InputDir = Model_attribute_prediction_new_DeepMatchMax_OutputDir
+Evaluation_attribute_prediction_new_PROSER_selecter_InputDir = Model_attribute_prediction_new_PROSER_selecter_OutputDir
 Evaluation_attribute_prediction_new_OutputDir = ROOT_PATH + "/data/result/attribute_prediction_new"
 
 # attribute_prediction_new_PROSER
@@ -241,6 +254,10 @@ Evaluation_link_prediction_new_COSSIMMLP_DeepMatchMax_inference_InputDir = Model
 Evaluation_link_prediction_new_COSSIMMLP_FNN_mix_InputDir = Model_link_prediction_new_COSSIMMLP_FNN_mix_OutputDir
 Evaluation_link_prediction_new_COSSIMMLP_FNN_learning_InputDir = Model_link_prediction_new_COSSIMMLP_FNN_learning_OutputDir
 Evaluation_link_prediction_new_COSSIMMLP_FNN_inference_InputDir = Model_link_prediction_new_COSSIMMLP_FNN_inference_OutputDir
+
+Evaluation_link_prediction_new_COSSIMMLP_PROSER_mix_InputDir = Model_link_prediction_new_COSSIMMLP_PROSER_mix_OutputDir
+Evaluation_link_prediction_new_COSSIMMLP_PROSER_learning_InputDir = Model_link_prediction_new_COSSIMMLP_PROSER_learning_OutputDir
+Evaluation_link_prediction_new_COSSIMMLP_PROSER_inference_InputDir = Model_link_prediction_new_COSSIMMLP_PROSER_inference_OutputDir
 
 Evaluation_link_prediction_new_OutputDir = ROOT_PATH + "/data/result/link_prediction_new"
 
@@ -459,6 +476,7 @@ attribute_prediction_new_PROSER_state_dim = attribute_dim * 2
 attribute_prediction_new_PROSER_output_dim = 1
 attribute_prediction_new_PROSER_target_idx = 4 # idx of percentile (min, 25, 50, 75, max)
 attribute_prediction_new_PROSER_threshold = 0.88514332408633 # threshold of max
+attribute_prediction_new_PROSER_drop_percentile = 2 # validデータでmeanが最大となるパーセンタイル (確率の上位98%は予測集合に加える)
 attribute_prediction_new_PROSER_init_L = L
 attribute_prediction_new_PROSER_niter = 1000
 attribute_prediction_new_PROSER_patience = 10

@@ -77,14 +77,14 @@ WORK_PATH=$(pwd)
 #python main.py
 #cd $WORK_PATH/Model/node_prediction_lost/STGCN
 #python main.py
-cd $WORK_PATH/Model/node_prediction_lost/STGGNN
-python main.py
+#cd $WORK_PATH/Model/node_prediction_lost/STGGNN
+#python main.py
 #cd $WORK_PATH/Model/node_prediction_lost/DynGEM
 #python main.py
 #cd $WORK_PATH/Model/node_prediction_lost/FNN
 #python main.py
-cd $WORK_PATH/Evaluation
-python node_prediction_lost.py
+#cd $WORK_PATH/Evaluation
+#python node_prediction_lost.py
 
 #link_prediction_new学習&評価
 #cd $WORK_PATH/Model/link_prediction_new/COSSIMMLP
@@ -97,6 +97,9 @@ python node_prediction_lost.py
 #python main.py DeepMatchMax mix
 #python main.py DeepMatchMax learning
 #python main.py DeepMatchMax inference
+#python main.py PROSER mix
+#python main.py PROSER learning
+#python main.py PROSER inference
 #cd $WORK_PATH/Evaluation
 #python link_prediction_new.py
 
