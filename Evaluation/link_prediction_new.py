@@ -37,10 +37,22 @@ from setting_param import Evaluation_link_prediction_new_COSSIMMLP_PROSER_mix_In
 from setting_param import Evaluation_link_prediction_new_COSSIMMLP_PROSER_learning_InputDir as COSSIMMLP_PROSER_learning_InputDir
 from setting_param import Evaluation_link_prediction_new_COSSIMMLP_PROSER_inference_InputDir as COSSIMMLP_PROSER_inference_InputDir
 
+from setting_param import Evaluation_link_prediction_new_DEAL_Baseline_inference_InputDir as DEAL_Baseline_inference_InputDir
+from setting_param import Evaluation_link_prediction_new_DEAL_FNN_inference_InputDir as DEAL_FNN_inference_InputDir
+from setting_param import Evaluation_link_prediction_new_DEAL_DeepMatchMax_inference_InputDir as DEAL_DeepMatchMax_inference_InputDir
+from setting_param import Evaluation_link_prediction_new_DEAL_PROSER_inference_InputDir as DEAL_PROSER_inference_InputDir
+
+from setting_param import Evaluation_link_prediction_new_FNN_Baseline_inference_InputDir as FNN_Baseline_inference_InputDir
+from setting_param import Evaluation_link_prediction_new_FNN_FNN_inference_InputDir as FNN_FNN_inference_InputDir
+from setting_param import Evaluation_link_prediction_new_FNN_DeepMatchMax_inference_InputDir as FNN_DeepMatchMax_inference_InputDir
+from setting_param import Evaluation_link_prediction_new_FNN_PROSER_inference_InputDir as FNN_PROSER_inference_InputDir
+
 from setting_param import Evaluation_link_prediction_new_OutputDir as OutputDir
 
-InputDirs = [COSSIMMLP_Baseline_learning_InputDir, COSSIMMLP_Baseline_inference_InputDir, COSSIMMLP_Baseline_mix_InputDir, COSSIMMLP_DeepMatchMax_learning_InputDir, COSSIMMLP_DeepMatchMax_inference_InputDir, COSSIMMLP_DeepMatchMax_mix_InputDir, COSSIMMLP_FNN_learning_InputDir, COSSIMMLP_FNN_inference_InputDir, COSSIMMLP_FNN_mix_InputDir, COSSIMMLP_PROSER_learning_InputDir, COSSIMMLP_PROSER_inference_InputDir, COSSIMMLP_PROSER_mix_InputDir]
-methods = ['COSSIMMLP_Baseline_learning', 'COSSIMMLP_Baseline_inference', 'COSSIMMLP_Baseline_mix', 'COSSIMMLP_DeepMatchMax_learning', 'COSSIMMLP_DeepMatchMax_inference', 'COSSIMMLP_DeepMatchMax_mix', 'COSSIMMLP_FNN_learning', 'COSSIMMLP_FNN_inference', 'COSSIMMLP_FNN_mix', 'COSSIMMLP_PROSER_learning', 'COSSIMMLP_PROSER_inference', 'COSSIMMLP_PROSER_mix']
+#InputDirs = [COSSIMMLP_Baseline_learning_InputDir, COSSIMMLP_Baseline_inference_InputDir, COSSIMMLP_Baseline_mix_InputDir, COSSIMMLP_DeepMatchMax_learning_InputDir, COSSIMMLP_DeepMatchMax_inference_InputDir, COSSIMMLP_DeepMatchMax_mix_InputDir, COSSIMMLP_FNN_learning_InputDir, COSSIMMLP_FNN_inference_InputDir, COSSIMMLP_FNN_mix_InputDir, COSSIMMLP_PROSER_learning_InputDir, COSSIMMLP_PROSER_inference_InputDir, COSSIMMLP_PROSER_mix_InputDir]
+#methods = ['COSSIMMLP_Baseline_learning', 'COSSIMMLP_Baseline_inference', 'COSSIMMLP_Baseline_mix', 'COSSIMMLP_DeepMatchMax_learning', 'COSSIMMLP_DeepMatchMax_inference', 'COSSIMMLP_DeepMatchMax_mix', 'COSSIMMLP_FNN_learning', 'COSSIMMLP_FNN_inference', 'COSSIMMLP_FNN_mix', 'COSSIMMLP_PROSER_learning', 'COSSIMMLP_PROSER_inference', 'COSSIMMLP_PROSER_mix']
+InputDirs = [FNN_Baseline_inference_InputDir, FNN_FNN_inference_InputDir, FNN_DeepMatchMax_inference_InputDir, FNN_PROSER_inference_InputDir]
+methods = ['FNN_Baseline_inference', 'FNN_FNN_inference', 'FNN_DeepMatchMax_inference', 'FNN_PROSER_inference']
 os.makedirs(OutputDir, exist_ok=True)
 os.makedirs(OutputDir + '/train', exist_ok=True)
 os.makedirs(OutputDir + '/valid', exist_ok=True)
@@ -133,6 +145,7 @@ def get_performance(InputDir, method, is_train, is_valid, is_test):
     (fpr, tpr, thresholds), auc = calc_roc(true_paths, pred_paths, mask_paths, target_idx)
     return fpr, tpr, thresholds, auc
 
+"""
 # Loss
 for idx, method in enumerate(methods):
     if method == 'Baseline':
@@ -173,6 +186,7 @@ for idx, method in enumerate(methods):
     plt.ylabel('TPR: True positive rate')
     plt.title('auc = ' + str(auc))
     plt.savefig(OutputDir + '/valid/roc_curve_' + method + '.pdf')
+"""
 
 for idx, method in enumerate(methods):
     InputDir = InputDirs[idx]

@@ -5,7 +5,15 @@ import sys
 import os
 current_dir = os.path.dirname(os.path.abspath("__file__"))
 sys.path.append( str(current_dir) + '/../../../' )
-from setting_param import Model_link_prediction_appeared_InputDir as InputDir
+
+# independentの場合
+#from setting_param import Model_link_prediction_appeared_InputDir as InputDir
+
+# repeat1 の場合は下記のうちの大きい方
+from setting_param import MakeSample_repeat1_link_prediction_appeared_utilize_existing_attribute_OutputDir as InputDir
+#from setting_param import MakeSample_repeat1_link_prediction_appeared_utilize_new_attribute_link_OutputDir as InputDir
+#from setting_param import MakeSample_repeat1_link_prediction_appeared_utilize_appeared_OutputDir as InputDir
+
 from setting_param import link_prediction_appeared_worker
 from setting_param import link_prediction_appeared_batchSize
 from setting_param import link_prediction_appeared_init_L

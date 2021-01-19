@@ -158,7 +158,7 @@ def get_expanded_mask_matrix_learning(ts, L, expanded_idx_dic, n_node, n_expande
 
 def get_expanded_node_attribute_inference(ts, L, n_node, n_expanded, new):
     node_attribute = NodeAttribute(ts)
-    node_attribute[sorted(GetNodes(ts, L, 'new'))] = 0
+    #node_attribute[sorted(GetNodes(ts, L, 'new'))] = 0
     new_node_attribute = new
 
     expanded_attribute = np.zeros((n_node + n_expanded, NodeAttribute(ts).shape[1]))
@@ -189,12 +189,11 @@ def get_expanded_label_matrix_inference(ts, L, expanded_idx_dic, n_node, n_expan
     A = np.array(nx.to_numpy_matrix(G, nodelist=[i for i in range(n_node + n_expanded)]))
     return A
 
-
 def get_expanded_mask_matrix_inference(ts, L, expanded_idx_dic, n_node, n_expanded):
     expanded_matrix = np.zeros((n_node + n_expanded, n_node + n_expanded))
     for n in GetNodes(ts, L, 'new'):
-        for s in GetNodes(ts, L, 'stay'):
-            if n in expanded_idx_dic.keys():
+        if n in expanded_idx_dic.keys():
+            for s in GetNodes(ts, L, 'stay'):
                 for n_ in expanded_idx_dic[n]:
                     expanded_matrix[n_][s] = 1
                     expanded_matrix[s][n_] = 1
@@ -334,7 +333,7 @@ for method_idx, OutputDir in enumerate(OutputDir_list):
             new_node = int(node_pair_list[new_row, 0])
             expanded_idx_dic[teacher_node].append(n_node + new_node)
         # input
-        node_attribute = get_expanded_node_attribute_inference(ts_test, L, n_node, n_expanded, new)
+        node_attribute = get_expanded_node_attribute_inference(ts_train[-1], L, n_node, n_expanded, new)# バグ修正済みもともとts_testにしていた
         # label
         label = get_expanded_label_matrix_inference(ts_test, L, expanded_idx_dic, n_node, n_expanded)
         # mask
