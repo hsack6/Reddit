@@ -15,7 +15,8 @@ from setting_param import MakeSample_repeat1_link_prediction_disappeared_utilize
 from setting_param import MakeSample_repeat1_link_prediction_disappeared_utilize_new_attribute_link_OutputDir as OutputDir_2
 from setting_param import MakeSample_repeat1_link_prediction_disappeared_utilize_disappeared_OutputDir as OutputDir_4
 from setting_param import MakeSample_repeat1_link_prediction_disappeared_utilize_appeared_OutputDir as OutputDir_8
-OutputDir = {0:OutputDir_0, 1:OutputDir_1, 2:OutputDir_2, 4:OutputDir_4, 8:OutputDir_8}
+from setting_param import MakeSample_repeat1_link_prediction_disappeared_utilize_all_OutputDir as OutputDir_15
+OutputDir = {0:OutputDir_0, 1:OutputDir_1, 2:OutputDir_2, 4:OutputDir_4, 8:OutputDir_8, 15:OutputDir_15}
 
 from setting_param import L
 from setting_param import attribute_dim
@@ -147,8 +148,8 @@ pred_new_attribute_node_pair_list = concat_train_valid_test(train_node_pair_list
 
 pred_attribute = {}
 for c_idx in range(16):
-    if not c_idx in [0, 1, 2, 4, 8]:
-        # 0 (既知ノード属性予測のみ), 1 (lost予測のみ), 2 (new(属性＋リンク)予測のみ), 4 (disappeared予測のみ), 8 (appeared予測のみ) だけ実験する
+    if not c_idx in [0, 1, 2, 4, 8, 15]:
+        # 0 (既知ノード属性予測のみ), 1 (lost予測のみ), 2 (new(属性＋リンク)予測のみ), 4 (disappeared予測のみ), 8 (appeared予測のみ), 15 (全部) だけ実験する
         continue
     pred_attribute[c_idx] = {}
     for ts in range(L, EXIST_TABLE.shape[1]-L):
@@ -167,13 +168,16 @@ for c_idx in range(16):
             pred_attribute[c_idx][ts] = pred_attribute_e
         elif c_idx == 2:
             pred_attribute[c_idx][ts] = np.concatenate([NodeAttribute(ts_train[-1]), pred_attribute_n], axis=0)
-        else:
+        elif (c_idx == 4) or (c_idx == 8):
             pred_attribute[c_idx][ts] = NodeAttribute(ts_train[-1])
-        #else:
-        #    pred_attribute[c_idx][ts] = np.concatenate([pred_attribute_e, pred_attribute_n], axis=0) # (3948, 35) repeat1実験には無いが既知ノードと新規ノードの属性予測の結果を活用する場合
+        elif c_idx == 15:
+            alive_nodes = set(np.unique(np.where(pred_adjacency_matrix[ts][c_idx] > 0)).tolist())
+            lost_node_list = sorted(set(GetNodes(ts_train[-1], L, 'all')) - alive_nodes)
+            pred_attribute_e[lost_node_list, :] = pred_attribute_e[lost_node_list, :] * 0
+            pred_attribute[c_idx][ts] = np.concatenate([pred_attribute_e, pred_attribute_n], axis=0)
 
 for c_idx in range(16):
-    if not c_idx in [0, 1, 2, 4, 8]:
+    if not c_idx in [0, 1, 2, 4, 8, 15]:
         # 0 (既知ノード属性予測のみ), 1 (lost予測のみ), 2 (new(属性＋リンク)予測のみ), 4 (disappeared予測のみ), 8 (appeared予測のみ) だけ実験する
         continue
     for ts in range(L, EXIST_TABLE.shape[1] - L):

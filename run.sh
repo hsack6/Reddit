@@ -132,10 +132,10 @@ WORK_PATH=$(pwd)
 #python main.py
 #cd $WORK_PATH/Model/link_prediction_appeared/DynGEM
 #python main.py
-cd $WORK_PATH/Model/link_prediction_appeared/LSTM
-python main.py
-cd $WORK_PATH/Evaluation
-python link_prediction_appeared.py
+#cd $WORK_PATH/Model/link_prediction_appeared/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python link_prediction_appeared.py
 
 #link_prediction_disappeared学習&評価
 #cd $WORK_PATH/Model/link_prediction_disappeared/Baseline
@@ -166,12 +166,15 @@ python link_prediction_appeared.py
 #python repeat1_link_prediction_appeared.py
 #python repeat1_link_prediction_disappeared.py
 #python repeat1_node_prediction_lost.py
+#python repeat1_link_prediction_new.py (精度が悪いので不採用)
+#python repeat1_attribute_prediction_new.py
 #cd $WORK_PATH/MakeSample/DynGEM_repeat1
 #python utilize_existing_attribute.py
 #python utilize_lost.py
 #python utilize_new_attribute_link.py
 #python utilize_appeared.py
 #python utilize_disappeared.py
+#python utilize_all.py
 
 #cd $WORK_PATH/Model/confirm_max_nnz_am/print_max_nnz_am/
 #python main.py # 標準出力されるmax_nnz_am_expandedをsetting_paramに記入
@@ -463,3 +466,237 @@ python link_prediction_appeared.py
 #python main.py
 #cd $WORK_PATH/Evaluation
 #python repeat1_link_prediction_disappeared_utilize_new_attribute_link.py
+
+
+# ここから all に絞って実験した
+#repeat1_link_prediction_appeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_link_prediction_appeared_utilize_all.py
+
+#repeat1_link_prediction_disappeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_link_prediction_disappeared_utilize_all.py
+
+# repeat1_node_prediction_lost_utilize_all学習
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_node_prediction_lost_utilize_all.py
+
+#repeat1_link_prediction_new_utilize_new_attribute_linkの学習&評価 (精度悪いので不採用)
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/Baseline
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/COSSIMMLP
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/EGCNh
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/EGCNo
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/GCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/Random
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/STGCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/STGGNN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/DynGEM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_utilize_new_attribute_link/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_link_prediction_new_utilize_new_attribute_link.py
+
+# repeat1_attribute_prediction_new_utilize_new_attribute_link学習
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/Baseline
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/EGCNh
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/EGCNo
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/GCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/LSTM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/STGCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/STGGNN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/DynGEM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_attribute_prediction_new_utilize_new_attribute_link/FNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_attribute_prediction_new_utilize_new_attribute_link.py
+
+#cd $WORK_PATH/MakeSample
+#python repeat1_link_prediction_new_AGATE.py
+
+#repeat1_link_prediction_new_AGATE
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_AGATE/COSSIMMLP
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_AGATE/DEAL
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_new_AGATE/FNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_link_prediction_new_AGATE.py
+
+# ここからrepeat2
+#cd $WORK_PATH/MakeSample
+#python repeat2_link_prediction_appeared.py
+#python repeat2_link_prediction_disappeared.py
+#python repeat2_node_prediction_lost.py
+#python repeat2_attribute_prediction_new.py
+
+#repeat2_link_prediction_appeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat2_link_prediction_appeared_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat2_link_prediction_appeared_utilize_all.py
+
+#repeat2_link_prediction_disappeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat2_link_prediction_disappeared_utilize_all/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat2_link_prediction_disappeared_utilize_all.py
+
+# repeat2_node_prediction_lost_utilize_all学習
+#cd $WORK_PATH/Model/repeat2_node_prediction_lost_utilize_all/STGCN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat2_node_prediction_lost_utilize_all.py
+
+# repeat2_attribute_prediction_new_utilize_new_attribute_link学習
+#cd $WORK_PATH/Model/repeat2_attribute_prediction_new_utilize_new_attribute_link/FNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat2_attribute_prediction_new_utilize_new_attribute_link.py
+
+#cd $WORK_PATH/MakeSample
+#python repeat2_link_prediction_new_AGATE.py
+
+#repeat2_link_prediction_new_AGATE
+#cd $WORK_PATH/Model/repeat2_link_prediction_new_AGATE/DEAL
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat2_link_prediction_new_AGATE.py
+
+
+# ここからrepeat3
+#cd $WORK_PATH/MakeSample
+#python repeat3_link_prediction_appeared.py
+#python repeat3_link_prediction_disappeared.py
+#python repeat3_node_prediction_lost.py
+#python repeat3_attribute_prediction_new.py
+
+#repeat3_link_prediction_appeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat3_link_prediction_appeared_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat3_link_prediction_appeared_utilize_all.py
+
+#repeat3_link_prediction_disappeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat3_link_prediction_disappeared_utilize_all/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat3_link_prediction_disappeared_utilize_all.py
+
+# repeat3_node_prediction_lost_utilize_all学習
+#cd $WORK_PATH/Model/repeat3_node_prediction_lost_utilize_all/STGCN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat3_node_prediction_lost_utilize_all.py
+
+# repeat3_attribute_prediction_new_utilize_new_attribute_link学習
+#cd $WORK_PATH/Model/repeat3_attribute_prediction_new_utilize_new_attribute_link/FNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat3_attribute_prediction_new_utilize_new_attribute_link.py
+
+#cd $WORK_PATH/MakeSample
+#python repeat3_link_prediction_new_AGATE.py
+
+#repeat3_link_prediction_new_AGATE
+#cd $WORK_PATH/Model/repeat3_link_prediction_new_AGATE/DEAL
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat3_link_prediction_new_AGATE.py
+
+
+# ここからrepeat1_utilize_allの網羅的な実験
+# repeat1_node_prediction_lost_utilize_all学習
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/Baseline
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/EGCNh
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/EGCNo
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/GCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/LSTM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/Random
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/STGCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/DynGEM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_node_prediction_lost_utilize_all/FNN
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_node_prediction_lost_utilize_all.py
+
+#repeat1_link_prediction_appeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/Baseline
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/COSSIMMLP
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/EGCNh
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/EGCNo
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/GCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/Random
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/STGCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/DynGEM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_appeared_utilize_all/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_link_prediction_appeared_utilize_all.py
+
+#repeat1_link_prediction_disappeared_utilize_allの学習&評価
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/Baseline
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/COSSIMMLP
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/EGCNh
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/EGCNo
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/GCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/Random
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/STGCN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/STGGNN
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/DynGEM
+#python main.py
+#cd $WORK_PATH/Model/repeat1_link_prediction_disappeared_utilize_all/LSTM
+#python main.py
+#cd $WORK_PATH/Evaluation
+#python repeat1_link_prediction_disappeared_utilize_all.py

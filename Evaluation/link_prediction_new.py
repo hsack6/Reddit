@@ -51,8 +51,8 @@ from setting_param import Evaluation_link_prediction_new_OutputDir as OutputDir
 
 #InputDirs = [COSSIMMLP_Baseline_learning_InputDir, COSSIMMLP_Baseline_inference_InputDir, COSSIMMLP_Baseline_mix_InputDir, COSSIMMLP_DeepMatchMax_learning_InputDir, COSSIMMLP_DeepMatchMax_inference_InputDir, COSSIMMLP_DeepMatchMax_mix_InputDir, COSSIMMLP_FNN_learning_InputDir, COSSIMMLP_FNN_inference_InputDir, COSSIMMLP_FNN_mix_InputDir, COSSIMMLP_PROSER_learning_InputDir, COSSIMMLP_PROSER_inference_InputDir, COSSIMMLP_PROSER_mix_InputDir]
 #methods = ['COSSIMMLP_Baseline_learning', 'COSSIMMLP_Baseline_inference', 'COSSIMMLP_Baseline_mix', 'COSSIMMLP_DeepMatchMax_learning', 'COSSIMMLP_DeepMatchMax_inference', 'COSSIMMLP_DeepMatchMax_mix', 'COSSIMMLP_FNN_learning', 'COSSIMMLP_FNN_inference', 'COSSIMMLP_FNN_mix', 'COSSIMMLP_PROSER_learning', 'COSSIMMLP_PROSER_inference', 'COSSIMMLP_PROSER_mix']
-InputDirs = [FNN_Baseline_inference_InputDir, FNN_FNN_inference_InputDir, FNN_DeepMatchMax_inference_InputDir, FNN_PROSER_inference_InputDir]
-methods = ['FNN_Baseline_inference', 'FNN_FNN_inference', 'FNN_DeepMatchMax_inference', 'FNN_PROSER_inference']
+InputDirs = [COSSIMMLP_Baseline_inference_InputDir, COSSIMMLP_DeepMatchMax_inference_InputDir, COSSIMMLP_FNN_inference_InputDir, COSSIMMLP_PROSER_inference_InputDir, DEAL_Baseline_inference_InputDir, DEAL_DeepMatchMax_inference_InputDir, DEAL_FNN_inference_InputDir, DEAL_PROSER_inference_InputDir, FNN_Baseline_inference_InputDir, FNN_DeepMatchMax_inference_InputDir, FNN_FNN_inference_InputDir, FNN_PROSER_inference_InputDir]
+methods = ['COSSIMMLP_Baseline_inference', 'COSSIMMLP_DeepMatchMax_inference', 'COSSIMMLP_FNN_inference', 'COSSIMMLP_PROSER_inference', 'DEAL_Baseline_inference', 'DEAL_DeepMatchMax_inference', 'DEAL_FNN_inference', 'DEAL_PROSER_inference', 'FNN_Baseline_inference', 'FNN_DeepMatchMax_inference', 'FNN_FNN_inference', 'FNN_PROSER_inference']
 os.makedirs(OutputDir, exist_ok=True)
 os.makedirs(OutputDir + '/train', exist_ok=True)
 os.makedirs(OutputDir + '/valid', exist_ok=True)

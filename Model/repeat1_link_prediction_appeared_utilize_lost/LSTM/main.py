@@ -61,7 +61,7 @@ opt.dataroot = InputDir
 if opt.cuda:
     torch.cuda.manual_seed_all(opt.manualSeed)
 
-opt.L = opt.init_L + 1
+opt.L = opt.init_L
 
 def main(opt):
     train_dataset = BADataset(opt.dataroot, opt.L, True, False, False)
